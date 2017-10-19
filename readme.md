@@ -7,6 +7,8 @@ Make your code 💯 - A collection of best practices for software
 * 2 spaces (instead of tabs)
 * Lint with `eslint:recommended` at a minimum
 * Promises (not callbacks)
+* No [decorators](https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841)
+* No [mobx](https://mobx.js.org/)
 
 ### ⚛️ React/Redux ⚛️
 
