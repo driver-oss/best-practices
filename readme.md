@@ -2,6 +2,11 @@
 
 Make your code 💯 - A collection of best practices for software
 
+## 🐙 GitHub 🐙
+
+* Branch off `master` and complete your feature. 
+* Pull request `master` and tag relevant people for review.
+
 ## ☕️ JavaScript ☕️
 
 * 2 spaces (instead of tabs)
@@ -9,6 +14,9 @@ Make your code 💯 - A collection of best practices for software
 * Promises (not callbacks)
 * No [decorators](https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841)
 * No [mobx](https://mobx.js.org/)
+* Test with [jest](https://facebook.github.io/jest/)
+  * Place jest tests alongside the file(s) it tests (not in a separate directory)
+  * End test files with `.test.js`
 
 ### ⚛️ React/Redux ⚛️
 
@@ -20,6 +28,12 @@ Make your code 💯 - A collection of best practices for software
 
 * Components should not wait for promises to resolve, instead listen on props via redux’ `mapStateToProps()`.
 * Declare and export components in separate places (otherwise the web inspector cannot name components properly)
+
+### Flowtype
+
+* Any types used in more than one file should be placed in `src/types.js`
+* Add flow linting via [eslint-plugin-flowtype](https://github.com/gajus/eslint-plugin-flowtype)
+* Disallow `any` with [eslint no-weak-types](https://github.com/gajus/eslint-plugin-flowtype#no-weak-types)
 
 ###  𝓣𝓢 TypeScript 𝓣𝓢
 
