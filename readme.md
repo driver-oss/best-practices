@@ -34,13 +34,13 @@ Make your code 💯 - A collection of best practices for software
 * Any types used in more than one file should be placed in `src/types.js`
 * Add flow linting via [eslint-plugin-flowtype](https://github.com/gajus/eslint-plugin-flowtype)
 * Disallow `any` with [eslint no-weak-types](https://github.com/gajus/eslint-plugin-flowtype#no-weak-types)
+* In components which use `mapStateToProps`, separate `OwnProps` from `ConnectedProps` into separate interfaces. Join them with `type Props = OwnProps & ConnectedProps`. In addition, if using `mapDispatchToProps`, create a type `DispatchProps` and join that with `Props`.
 
 ###  𝓣𝓢 TypeScript 𝓣𝓢
 
 * Lint with [`tslint:recommended`](https://github.com/palantir/tslint) at a minimum.
 * No implicit any (type everything that’s not inferable)
-* Any variable declared without an initial value should be typed (`let patientId;`)
-* In components which use `mapStateToProps`, separate `ownProps` from `connectedProps` into separate interfaces
+* Any variable declared without an initial value should be typed
 
 ## 💅 CSS 💅
 
