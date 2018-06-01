@@ -101,3 +101,17 @@ Use `lint-staged` to auto-call prettier in a `precommit` "`script`":
 ## 🕸 Browsers 🕸
 
 * Avoid supporting versions of Internet Explorer before IE11.
+
+## Scala
+
+* Formatting, style checking and linting is automated by [our common
+  build tool configuration](https://github.com/drivergroup/sbt-settings).
+
+* Start with simple code and abstract as it becomes necessary. Follow
+  the [Principle of Least
+  Power](http://www.lihaoyi.com/post/StrategicScalaStylePrincipleofLeastPower.html).
+
+* Avoid exposing library-specific types in shared code (such as Scalaz
+  etc). You're free to experiment with those libraries within
+  services, however a more conservative approach should be taken in
+  shared modules.
