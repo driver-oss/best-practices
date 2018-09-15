@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="$lang$" xml:lang="$lang$"$if(dir)$ dir="$dir$"$endif$>
+    <head>
+	<meta charset="utf-8" />
+	<meta name="generator" content="pandoc" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+	$for(author-meta)$
+	<meta name="author" content="$author-meta$" />
+	$endfor$
+	$if(date-meta)$
+	<meta name="dcterms.date" content="$date-meta$" />
+	$endif$
+	$if(keywords)$
+	<meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
+	$endif$
+	<title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+	<style type="text/css">
+	 code{white-space: pre-wrap;}
+	 span.smallcaps{font-variant: small-caps;}
+	 span.underline{text-decoration: underline;}
+	 div.column{display: inline-block; vertical-align: top; width: 50%;}
+	 $if(quotes)$
+	 q { quotes: "“" "”" "‘" "’"; }
+	 $endif$
+	</style>
+	$if(highlighting-css)$
+	<style type="text/css">
+	 $highlighting-css$
+	</style>
+	$endif$
+	<link rel="stylesheet" href="assets/lib/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/lib/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/stylesheets/main.css">
+	$for(css)$
+	<link rel="stylesheet" href="$css$" />
+	$endfor$
+	$if(math)$
+	$math$
+	$endif$
+	$for(header-includes)$
+	$header-includes$
+	$endfor$
+    </head>
+    <body>
+	$for(include-before)$
+	$include-before$
+	$endfor$
+	$if(title)$
+	<header class="container">
+	    <div style="text-align: center;">
+		<h1>$title$</h1>
+		$if(subtitle)$
+		<p class="subtitle">$subtitle$</p>
+		$endif$
+		<nav class="my-4">
+		    <a class="btn btn-light" href="css.html">
+			<img src="assets/images/css.svg" width="16px" class="img-fluid">
+			CSS
+		    </a>
+		    <a class="btn btn-light" href="git.html">
+			<img src="assets/images/git.png" width="16px" class="img-fluid">
+			Git
+		    </a>
+		    <a class="btn btn-light" href="html.html">
+			<img src="assets/images/html5.svg" width="16px" class="img-fluid">
+			HTML
+		    </a>
+		    <a class="btn btn-light" href="javascript.html">
+			<img src="assets/images/javascript.png" width="16px" class="img-fluid">
+			JavaScript
+		    </a>
+		    <a class="btn btn-light" href="scala.html">
+			<img src="assets/images/scala.png" width="16px" class="img-fluid">
+			Scala
+		    </a>
+		    <a class="btn btn-light" href="shell-script.html">
+			<img src="assets/images/bash.svg" width="16px" class="img-fluid">
+			Shell Script
+		    </a>
+		</nav>
+	    </div>
+	    $if(toc)$
+	    <nav id="$idprefix$TOC">
+		$table-of-contents$
+	    </nav>
+	    $endif$
+	</header>
+	$endif$
+	<div class="container">
+	    This guide recommends stylistic and architectural best
+	    practices, designed to make your code easier for others to
+	    understand. It offers <em>guidelines</em> not <em>rules</em>,
+	    and there are situations in which the advice offered
+	    should be actively ignored.
+	    <hr>
+	</div>
+	<main class="container">
+	    $body$
+	</main>
+	<footer class="small mt-6 mb-1">
+	    $if(date)$
+	    <span class="date">$date$</span>
+	    $endif$
+	    $if(url)$
+	    | <a href="$url$/$sourcefile$" style="display: inline-block;"><i class="fa fa-github"></i> Edit on GitHub</a>
+	    $endif$
+	</footer>
+	$for(include-after)$
+	$include-after$
+	$endfor$
+    </body>
+</html>
