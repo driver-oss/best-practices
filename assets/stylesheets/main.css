@@ -1,0 +1,25 @@
+footer {
+    text-align: center;
+}
+
+main > ul {
+    list-style-type: none;
+}
+
+main > ul > li {
+    position: relative;
+    padding-left: 0px;
+    margin-bottom: 10px
+}
+
+main > ul > li:before {
+    position: absolute;
+    top: 0px;
+    left: -30px;
+    font-family: FontAwesome;
+    content: "\f0a4";
+}
+
+main > ul > li > p:first-child {
+    font-weight: bold;
+}
