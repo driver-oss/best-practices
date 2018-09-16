@@ -1,6 +1,6 @@
 title="Style Guide"
 subtitle="Software Engineering at Driver"
-url=https://github.com/drivergroup/best-practices
+url=https://github.com/drivergroup/best-practices/blob/master
 git_url=git@github.com:drivergroup/best-practices.git
 
 ghpages=.gh-pages
