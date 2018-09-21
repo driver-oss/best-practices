@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+    <head>
+	<meta charset="utf-8" />
+	<meta name="generator" content="pandoc" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+			<meta name="dcterms.date" content="2018-09-21" />
+			<title>Style Guide</title>
+	<style type="text/css">
+	 code{white-space: pre-wrap;}
+	 span.smallcaps{font-variant: small-caps;}
+	 span.underline{text-decoration: underline;}
+	 div.column{display: inline-block; vertical-align: top; width: 50%;}
+	 	</style>
+		<link rel="stylesheet" href="assets/lib/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/lib/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/stylesheets/main.css">
+			    </head>
+    <body>
+			<header class="container">
+	    <div style="text-align: center;">
+		<h1>Style Guide</h1>
+				<p class="subtitle">Software Engineering at Driver</p>
+				<nav class="my-4">
+		    <a class="btn btn-light" href="css.html">
+			<img src="assets/images/css.svg" width="16px" class="img-fluid">
+			CSS
+		    </a>
+		    <a class="btn btn-light" href="git.html">
+			<img src="assets/images/git.png" width="16px" class="img-fluid">
+			Git
+		    </a>
+		    <a class="btn btn-light" href="html.html">
+			<img src="assets/images/html5.svg" width="16px" class="img-fluid">
+			HTML
+		    </a>
+		    <a class="btn btn-light" href="javascript.html">
+			<img src="assets/images/javascript.png" width="16px" class="img-fluid">
+			JavaScript
+		    </a>
+		    <a class="btn btn-light" href="scala.html">
+			<img src="assets/images/scala.png" width="16px" class="img-fluid">
+			Scala
+		    </a>
+		    <a class="btn btn-light" href="shell-script.html">
+			<img src="assets/images/bash.svg" width="16px" class="img-fluid">
+			Shell Script
+		    </a>
+		</nav>
+	    </div>
+	    	</header>
+		<div class="container">
+	    This guide recommends stylistic and architectural best
+	    practices, designed to make your code easier for others to
+	    understand. It offers <em>guidelines</em> not <em>rules</em>,
+	    and there are situations in which the advice offered
+	    should be actively ignored.
+	    <hr>
+	</div>
+	<main class="container">
+	    <h2 id="scala">Scala</h2>
+<h3 id="introduction">Introduction</h3>
+<p>Writing programs in Scala is fun. It enables developers to write concise code that is free of boilerplate and enables readers to focus on business logic. It does this in two principle ways. First, it encourages a functional programming style, but still makes it easy to fall back to an imperative approach when needed. Second, it has a strong typesystem that is strict and sound enough to help catch many classes of programming errors at compile time, yet is unobtrusive enough to enable developers to work quickly and without requiring an IDE.</p>
+<p>Scala is considered to be an “unopinionated” language, and many styles are seen across multiple organisations. Our approach to idiomatic Scala is the following:</p>
+<ul>
+<li>It is simple (this may be different from “easy”). It is concise and focuses on business logic.</li>
+<li>It is functional, but not purely functional. We use state when it makes sense. Sometimes state actually improves readability of code.</li>
+<li>It is also not “Java++”. We do allow and encourage the occasional implicit. Strongly typed is preferred to stringly typed.</li>
+<li>It may borrow ideas from category theory, but those ideas aren’t a prerequisite for the reader. No need to know what a monad is.</li>
+<li>It is beyond typelevel programming. Typesafety is very valuable, however only within bounds. Shoehorning a full domain model into a single typesafe library has its own set of drawbacks, such as code size, compilation time, and tight coupling.</li>
+</ul>
+<p>As an extra benefit, we encourage libraries to be compilable with ScalaJS and Scala Native.</p>
+<h3 id="guidelines">Guidelines</h3>
+<ul>
+<li><p>First and foremost, follow <a href="http://www.lihaoyi.com/post/StrategicScalaStylePrincipleofLeastPower.html#philosophy-principle-of-least-power">the Principle of Least Power</a>.</p>
+<p>In a nutshell:</p>
+<ul>
+<li><p>Keep your code simple and at a level of abstraction dictated by the actual circumstances.</p></li>
+<li><p>Don’t design an API that will fit all future requirements. Start simple and refactor when the time comes. A good rule of thumb is to assume that you will completely rewrite your code at least once before finding a satisfactory solution.</p></li>
+</ul>
+<p>Rationale: the article justifies its points thoroughly. In general, Scala makes it easy to design advanced abstractions which can make it harder for an outsider to grasp a codebase. As a codebase grows, sometimes these abstractions become necessary, however they usually aren’t in the beginning. Since Scala is a statically typed language, you should not fear refactoring when they do become necessary.</p>
+<p><em>Scala’s name comes from “scalable language”. That refers to large, as well as small!</em></p></li>
+<li><p>Avoid building libraries in such a way that they require wildcard imports to function.</p>
+<p>I.e. avoid building libraries that use this common pattern: <code>import foo.bar._</code></p>
+<p>Rationale: a developer using a library doesn’t want to know how it works, but wants to get his or her job done. Wildcard imports (especially if they bring into scope implicits) obfuscate the origin of types and methods to a reader who is not familiar with the library, and hence make it harder for the reader to edit.</p></li>
+<li><p>Choose dependencies on external libraries judiciously, and keep them to a minimum. Avoid depending on multiple libraries that offer similar functionality.</p>
+<p>Prefer reimplementing <em>small</em> features in your own code rather than relying on a library.</p>
+<p>For example, assume a web service has a REST API and also offers a Java library that wraps said API. In the case where only a couple of endpoints from the external REST service are required in some code, prefer calling the endpoints with an HTTP client directly, rather than relying on the entire library. This allows you to forego an additional layer of indirection and keeps you in control of which HTTP client to use.</p></li>
+<li><p>In public interfaces, expose only types from the Scala standard library. In particular, avoid exposing scalaz or cats types.</p></li>
+<li><p>Make use of comments liberally. Describe interesting parts of code, how to use it and why it’s there. Don’t comment <em>everything</em>.</p></li>
+<li><p>Organise code in a functionally cohesive manner. Use one parent package to namespace a library, and use nested packages according to functionality.</p></li>
+<li><p>Do not use runtime reflection.</p>
+<p>Rationale: runtime reflection circumvents type checking and strongly ties applications to the JVM.</p></li>
+<li><p>Use <a href="https://scalameta.org/scalafmt/docs/introduction.html">scalafmt</a> to format code.</p>
+<p>Rationale: formatting is material for holy wars. If it is enforced by an automatic tool then there is no room for such discussions.</p></li>
+</ul>
+<h2 id="other-resources">Other Resources</h2>
+<p><a href="https://www.infoq.com/presentations/Simple-Made-Easy">Simple Made Easy</a>, by Rich Hickey. A great talk about the differences between “Simple”, “Complex”, “Easy” and “Hard”, and how to write simple programs.</p>
+	</main>
+	<footer class="small mt-6 mb-1">
+	    	    <span class="date">2018-09-21</span>
+	    	    	    | <a href="https://github.com/drivergroup/best-practices/blob/master/guides/scala.md" style="display: inline-block;"><i class="fa fa-github"></i> Edit on GitHub</a>
+	    	</footer>
+	    </body>
+</html>
