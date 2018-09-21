@@ -1,5 +1,40 @@
 ## Scala
 
+### Introduction
+
+Writing programs in Scala is fun. It enables developers to write
+concise code that is free of boilerplate and enables readers to focus
+on business logic. It does this in two principle ways. First, it
+encourages a functional programming style, but still makes it easy to
+fall back to an imperative approach when needed. Second, it has a
+strong typesystem that is strict and sound enough to help catch many
+classes of programming errors at compile time, yet is unobtrusive
+enough to enable developers to work quickly and without requiring an
+IDE.
+
+Scala is considered to be an "unopinionated" language, and many styles
+are seen across multiple organisations. Our approach to idiomatic
+Scala is the following:
+
+- It is simple (this may be different from "easy"). It is concise and
+  focuses on business logic.
+- It is functional, but not purely functional. We use state when it
+  makes sense. Sometimes state actually improves readability of code.
+- It is also not "Java++". We do allow and encourage the occasional
+  implicit. Strongly typed is preferred to stringly typed.
+- It may borrow ideas from category theory, but those ideas aren't a
+  prerequisite for the reader. No need to know what a monad is.
+- It is beyond typelevel programming. Typesafety is very valuable,
+  however only within bounds. Shoehorning a full domain model into a
+  single typesafe library has its own set of drawbacks, such as code
+  size, compilation time, and tight coupling.
+
+As an extra benefit, we encourage libraries to be compilable with
+ScalaJS and Scala Native.
+
+
+### Guidelines
+
 - First and foremost, follow [the Principle of Least
   Power](http://www.lihaoyi.com/post/StrategicScalaStylePrincipleofLeastPower.html#philosophy-principle-of-least-power).
   
