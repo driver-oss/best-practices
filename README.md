@@ -8,6 +8,8 @@ languages and technologies used at Driver. Check out the
 
 ## Building
 
+[![Build Status](https://travis-ci.org/drivergroup/best-practices.svg?branch=master)](https://travis-ci.org/drivergroup/best-practices)
+
 The website is built with [pandoc](https://pandoc.org/) and published
 via [GitHub Pages](https://pages.github.com/).
 
